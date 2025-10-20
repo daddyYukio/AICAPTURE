@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+	<title>AI CAPTURE</title>
+	
+	<style>
+
+	body{ 
+		background-color: #808080;
+		margin-left: 0px;
+		margin-top: 0px;
+		margin-right: 0px;
+		margin-bottom: 0px;
+		overflow-x: hidden;
+		overflow-y: hidden;
+	} 
+	
+	</style>
+	
+	<script type="text/javascript">
+		
+		function init() {
+			expand();
+			draw();
+		}
+		
+		function draw() {
+			var canvas = document.getElementById('c1');
+			var ctx = canvas.getContext('2d');
+			var canW = canvas.width;
+			var canH = canvas.height;
+			const img = new Image();
+			img.onload = function() {
+				drawImage(ctx, img, canW, canH);
+			}
+			img.src = `result.jpg?t=${new Date().getTime()}`;
+		}
+		
+		function drawImage(ctx, img, canW, canH) {
+			
+			var imgW = img.width;
+			var imgH = img.height;
+			
+			var dstW = canW;
+			var dstH = imgH * dstW / img.width;
+			if (dstH > canH) {
+				dstH = canH;
+				dstW = imgW * dstH / img.height;
+			}
+
+			var dstX = (canW - dstW) / 2;
+			var dstY = (canH - dstH) / 2;
+			
+			ctx.drawImage(img, dstX, dstY, dstW, dstH);
+		}
+		
+		function expand(){
+			var canvas = document.getElementById('c1');
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+		}
+		
+	</script>
+
+</head>
+
+<body>
+
+	<canvas id="c1" style="background-color:gray;"></canvas>
+	
+
+	<script type="text/javascript">
+		window.onload = function(){init();}
+		window.onresize = function(){expand();}
+		setInterval("draw()", 100);
+	</script>
+
+</body>
+
+</html>
