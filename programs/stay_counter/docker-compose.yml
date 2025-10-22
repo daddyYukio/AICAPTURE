@@ -4,7 +4,7 @@ services:
   extmod:
     container_name: extmod
     image: aicap/arm64/ultralytics:1.0.250923
-    command: /home/cap/aicap/extmod/stay_counter.py
+    command: /home/cap/aicap/extmod/extmod.py
     volumes:
       - /usr/local/aicap:/usr/local/aicap
       - /home/cap/aicap:/home/cap/aicap
