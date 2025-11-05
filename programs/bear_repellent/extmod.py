@@ -134,61 +134,62 @@ def _play_wav_thread(wav_path : str):
 
     print(f"Start playing wav!: {wav_path}")
 
-    # WAVファイル読み込み
-    data, fs = sf.read(wav_path, dtype='float32')
-
-    # モノラル対策：1次元配列を (N, 1) に変換
-    if data.ndim == 1:
-        data = data[:, np.newaxis]
-
-    channels = data.shape[1] if data.ndim > 1 else 1
-    length = len(data)
-    
-    # blocksize をサンプリングレートから計算（目的秒数分）
-    blocksize = int(fs * BLOCK_DURATION_SEC)
-    if blocksize < 64:
-        blocksize = 64  # 最低値の保護
-    print(f"sample_rate={fs}, channels={channels}, wav_length_frames={length}, blocksize={blocksize}")
-
-    # 出力デバイスを名前で検索
-    devices = sd.query_devices()
-    device_index = None
-
-    for idx, dev in enumerate(devices):
-        if OUTPUT_AUDIO_DEVICE_NAME.lower() in dev['name'].lower() and dev['max_output_channels'] > 0:
-            device_index = idx
-            break
-
-    if device_index is None:
-        raise RuntimeError(f"Could not find the device! '{OUTPUT_AUDIO_DEVICE_NAME}'")
-
-    print(f"Use this device: {devices[device_index]['name']}")
-
-    # 音声データの位置
-    pos = 0
-
-    # 音声再生コールバック
-    def audio_callback(outdata, frames, time_info, status):
-        nonlocal pos
-        if status:
-            print(f"Playback warning: {status}")
-
-        # 出力先のサイズを初期化
-        outdata.fill(0.0)
-
-        frames_written = 0
-        while frames_written < frames:
-            remaining_data = length - pos
-            remaining_out = frames - frames_written
-            chunk = min(remaining_data, remaining_out)
-
-            # 一部だけコピー
-            outdata[frames_written:frames_written+chunk] = data[pos:pos+chunk]
-            pos = (pos + chunk) % length
-            frames_written += chunk
-
-
     try:
+
+        # WAVファイル読み込み
+        data, fs = sf.read(wav_path, dtype='float32')
+
+        # モノラル対策：1次元配列を (N, 1) に変換
+        if data.ndim == 1:
+            data = data[:, np.newaxis]
+
+        channels = data.shape[1] if data.ndim > 1 else 1
+        length = len(data)
+        
+        # blocksize をサンプリングレートから計算（目的秒数分）
+        blocksize = int(fs * BLOCK_DURATION_SEC)
+        if blocksize < 64:
+            blocksize = 64  # 最低値の保護
+        print(f"sample_rate={fs}, channels={channels}, wav_length_frames={length}, blocksize={blocksize}")
+
+        # 出力デバイスを名前で検索
+        devices = sd.query_devices()
+        device_index = None
+
+        for idx, dev in enumerate(devices):
+            if OUTPUT_AUDIO_DEVICE_NAME.lower() in dev['name'].lower() and dev['max_output_channels'] > 0:
+                device_index = idx
+                break
+
+        if device_index is None:
+            raise RuntimeError(f"Could not find the device! '{OUTPUT_AUDIO_DEVICE_NAME}'")
+
+        print(f"Use this device: {devices[device_index]['name']}")
+
+        # 音声データの位置
+        pos = 0
+
+        # 音声再生コールバック
+        def audio_callback(outdata, frames, time_info, status):
+            nonlocal pos
+            if status:
+                print(f"Playback warning: {status}")
+
+            # 出力先のサイズを初期化
+            outdata.fill(0.0)
+
+            frames_written = 0
+            while frames_written < frames:
+                remaining_data = length - pos
+                remaining_out = frames - frames_written
+                chunk = min(remaining_data, remaining_out)
+
+                # 一部だけコピー
+                outdata[frames_written:frames_written+chunk] = data[pos:pos+chunk]
+                pos = (pos + chunk) % length
+                frames_written += chunk
+
+        # 再生開始
         with sd.OutputStream(
             samplerate=fs,
             channels=channels,
@@ -198,6 +199,7 @@ def _play_wav_thread(wav_path : str):
             callback=audio_callback
         ):
             while True:
+                # 指定時間経過か、イベントがセットされるまでループ再生
                 timestamp = int(datetime.now(tz=timezone.utc).timestamp())
                 if timestamp >= stop_wav_time or stop_event.is_set():
                     break
