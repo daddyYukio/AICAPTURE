@@ -1,0 +1,25 @@
+# docker-compose.yml
+
+services:
+  extmod:
+    container_name: extmod
+    image: aicap/arm64/ultralytics:1.0.250923-audio
+    command: /home/cap/aicap/extmod/extmod.py
+    volumes:
+      - /usr/local/aicap:/usr/local/aicap
+      - /home/cap/aicap:/home/cap/aicap
+      - /var/www:/var/www
+    devices:
+      - /dev/snd:/dev/snd
+    group_add:
+      - audio
+    environment:
+      MODEL_FILE_NAME: yolo11m_ncnn_model
+      PREVIEW_IMAGE_PATH: /var/www/html/result.jpg
+    network_mode: host
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "10"
+
