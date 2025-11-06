@@ -8,6 +8,11 @@ AIBOX OSに標準搭載のAI検知プログラムです
 
 <img src="./programs/built-in-object-detection/detection.jpg" width="500">
 
+## [熊撃退プログラム](./programs/bear_repellent)
+熊などの物体を検知するとPush通知と共に音を出して害獣を追い払います。
+
+<img src="./programs/bear_repellent/title.jpg" width="500">
+
 ## [長時間駐車車両検出プログラム](./programs/stay_counter)
 長時間駐車している車両を検出してPush通知を送信する検知プログラムです。
 
