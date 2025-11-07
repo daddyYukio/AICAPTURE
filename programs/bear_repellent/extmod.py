@@ -122,7 +122,7 @@ def stop_wav():
 def _play_wav_thread(wav_path : str):
     """
     WAVファイルを再生するスレッド関数
-    aplayコマンドを実行してWAVファイルの再生を開始します
+    sounddeviceを使用してWAVファイルの再生を開始します
 
     Args:
         wav_path (str) : 再生するWAVファイルのパス
