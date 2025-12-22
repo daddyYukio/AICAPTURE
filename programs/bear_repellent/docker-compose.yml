@@ -3,7 +3,7 @@
 services:
   extmod:
     container_name: extmod
-    image: aicap/arm64/ultralytics:1.0.250923-audio
+    image: aicap/arm64/ultralytics:1.0.250923-audio-bt
     command: /home/cap/aicap/extmod/extmod.py
     volumes:
       - /usr/local/aicap:/usr/local/aicap
