@@ -7,4 +7,4 @@ SwitchBot プラグミニをBluetooth経由で制御し、人などを検知す�
 
 ![](./switchbot.jpg)
 
-[プログラムの説明はこちら]()
+[プログラムの説明はこちら](https://aicap.daddysoffice.com/ja/overview_power_on_appliance.html)
