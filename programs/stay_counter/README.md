@@ -8,3 +8,4 @@ YOLO11のトラッキングを使用して、認識した物体の静止して�
 
 ![](./stay_counter.jpg)
 
+[プログラムの説明はこちら](https://aicap.daddysoffice.com/ja/overview_stay_counter.html)
