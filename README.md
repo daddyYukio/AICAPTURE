@@ -23,7 +23,7 @@ YOLO11のトラッキングを使用して、認識した物体の静止して�
 ## [検知したら電源ON](./programs/power_on_appliance)
 人などを検知したら、電源をONにするプログラムです。
 
-BluetoothでSwitchBotミニプラグを制御します。
+BluetoothでSwitchBotプラグミニを制御します。
 
 [![](./programs/power_on_appliance/switchbot.jpg)](./programs/power_on_appliance)
 
