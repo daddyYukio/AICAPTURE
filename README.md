@@ -27,6 +27,16 @@ BluetoothでSwitchBotミニプラグを制御します。
 
 [![](./programs/power_on_appliance/switchbot.jpg)](./programs/power_on_appliance)
 
+
+## 開発への参加について
+
+このリポジトリはオープンです。誰でも自由に開発・改善に参加できます。  
+
+- リポジトリを **Fork / Clone** して自由に開発してください。  
+- 変更や追加機能は **Commit** して、リポジトリ宛に **Pull Request（PR）** を送ってください。  
+- PR は内容を確認した上で **Merge** します。  
+
+また、Issue を立てたり Discussion で提案することも歓迎です。  
 ## ライセンス
 
 このプロジェクトは MIT License で公開されています。詳細は LICENSE ファイルを参照してください。
