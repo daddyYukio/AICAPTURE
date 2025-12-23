@@ -6,20 +6,26 @@
 ## [AIBOX OS 標準搭載AI検知プログラム](./programs/built-in-object-detection)
 AIBOX OSに標準搭載のAI検知プログラムです
 
-<img src="./programs/built-in-object-detection/detection.jpg" width="500">
+[![](./programs/built-in-object-detection/detection.jpg)](./programs/built-in-object-detection)
 
 ## [熊撃退プログラム](./programs/bear_repellent)
 熊などの物体を検知するとPush通知と共に音を出して害獣を追い払います。
 
-<img src="./programs/bear_repellent/title.jpg" width="500">
+[![](./programs/bear_repellent/title.jpg)](./programs/bear_repellent)
 
 ## [長時間駐車車両検出プログラム](./programs/stay_counter)
 長時間駐車している車両を検出してPush通知を送信する検知プログラムです。
 
 YOLO11のトラッキングを使用して、認識した物体の静止している時間を計測します。
 
-<img src="./programs/stay_counter/stay_counter.jpg" width="500">
+[![](./programs/stay_counter/stay_counter.jpg)](./programs/stay_counter)
 
+## [検知したら電源ON](./programs/power_on_appliance)
+人などを検知したら、電源をONにするプログラムです。
+
+BluetoothでSwitchBotミニプラグを制御します。
+
+[![](./programs/power_on_appliance/switchbot.jpg)](./programs/power_on_appliance)
 
 ## ライセンス
 
