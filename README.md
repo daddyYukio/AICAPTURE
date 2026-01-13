@@ -6,7 +6,12 @@
 ## [AIBOX OS 標準搭載AI検知プログラム](./programs/built-in-object-detection)
 AIBOX OSに標準搭載のAI検知プログラムです
 
-[![](./programs/built-in-object-detection/detection.jpg)](./programs/built-in-object-detection)
+[![](./programs/built-in-object-detection/title.jpg)](./programs/built-in-object-detection)
+
+## [検知10秒前から録画](./programs/auto_rec)
+物体を検知したら、約10秒前から録画を開始します
+
+[![](./programs/auto_rec/title.jpg)](./programs/auto_rec)
 
 ## [熊撃退プログラム](./programs/bear_repellent)
 熊などの物体を検知するとPush通知と共に音を出して害獣を追い払います。
@@ -18,14 +23,14 @@ AIBOX OSに標準搭載のAI検知プログラムです
 
 YOLO11のトラッキングを使用して、認識した物体の静止している時間を計測します。
 
-[![](./programs/stay_counter/stay_counter.jpg)](./programs/stay_counter)
+[![](./programs/stay_counter/title.jpg)](./programs/stay_counter)
 
 ## [検知したら電源ON](./programs/power_on_appliance)
 人などを検知したら、電源をONにするプログラムです。
 
 BluetoothでSwitchBotプラグミニを制御します。
 
-[![](./programs/power_on_appliance/switchbot.jpg)](./programs/power_on_appliance)
+[![](./programs/power_on_appliance/title.jpg)](./programs/power_on_appliance)
 
 
 ## 開発への参加について

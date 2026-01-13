@@ -5,6 +5,6 @@ SwitchBot プラグミニをBluetooth経由で制御し、人などを検知す�
 
 帰宅時に自動でライトを照らす、などの用途に使えます。
 
-![](./switchbot.jpg)
+![](./title.jpg)
 
 [プログラムの説明はこちら](https://aicap.daddysoffice.com/ja/overview_power_on_appliance.html)

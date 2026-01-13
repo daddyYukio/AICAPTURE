@@ -6,6 +6,6 @@ YOLO11のトラッキングを使用して、認識した物体の静止して�
 
 検出物体を車から人に変更することで、店の前で一定時間立ち止まっている人がいたら通知を送る、という使い方もできます。
 
-![](./stay_counter.jpg)
+![](./title.jpg)
 
 [プログラムの説明はこちら](https://aicap.daddysoffice.com/ja/overview_stay_counter.html)

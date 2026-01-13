@@ -2,6 +2,6 @@
 
 AIBOX OSに標準搭載のAI検知プログラムです。
 
-![](./detection.jpg)
+![](./title.jpg)
 
 [プログラムの説明はこちら](https://aicap.daddysoffice.com/ja/overview_built_in_detection.html)

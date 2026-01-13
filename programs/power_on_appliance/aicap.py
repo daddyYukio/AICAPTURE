@@ -72,3 +72,80 @@ def push(timestamp: int, image: bytes, result: dict):
             f"{e.stderr.decode(errors='ignore')}"
         ) from e
 
+def start_rec():
+    """
+    録画を開始します
+    (aicap start_recコマンド実行)
+
+    Returns:
+        なし
+    """
+
+    try:
+        #
+        # aicap start_recコマンド実行
+        result = subprocess.run(
+            ["aicap", "start_rec"],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+    
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(
+            f"Command failed (exit code {e.returncode}): "
+            f"{e.stderr.decode(errors='ignore')}"
+        ) from e
+
+def stop_rec():
+    """
+    録画を停止します
+    (aicap stop_recコマンド実行)
+
+    Returns:
+        なし
+    """
+
+    try:
+        #
+        # aicap stop_recコマンド実行
+        result = subprocess.run(
+            ["aicap", "stop_rec"],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+    
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(
+            f"Command failed (exit code {e.returncode}): "
+            f"{e.stderr.decode(errors='ignore')}"
+        ) from e
+
+def get_rec_status() -> str:
+    """
+    録画状態を取得します
+    (aicap get_rec_statusコマンド実行)
+
+    Returns:
+        str : 録画ステータス(Recording or Stopped)
+
+    """
+
+    try:
+        #
+        # aicap start_recコマンド実行
+        result = subprocess.run(
+            ["aicap", "get_rec_status"],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True 
+        )
+        return result.stdout
+    
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(
+            f"Command failed (exit code {e.returncode}): "
+            f"{e.stderr.decode(errors='ignore')}"
+        ) from e
